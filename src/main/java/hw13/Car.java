@@ -1,34 +1,40 @@
 package hw13;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 public class Car implements CarInterface {
     private static final int FULL_BACK_FUEL = 60;
     private static final int FULL_CHARGE_ELECTRIC = 1000;
     private String model;
-    private TypeOfCar typeOfCar;
+    @NotNull private TypeOfCar typeOfCar = TypeOfCar.SEDAN;
     private int horsePowers;
     private int mass;
     private int seats;
     private int fuelCapacity;
-    private Engine engine;
+    @NotNull private Engine engine = Engine.getInstance();
 
     public Car(){}
 
-    public Car(String model, TypeOfCar typeOfCar, int horsePowers, int mass, int seats, int fuelCapacity, Engine engine) {
-        this.model = model;
-        this.typeOfCar = typeOfCar;
-        this.horsePowers = horsePowers;
-        this.mass = mass;
-        this.seats = seats;
-        this.fuelCapacity = fuelCapacity;
-        this.engine = engine;
-    }
+//    public Car(String model, TypeOfCar typeOfCar, int horsePowers, int mass, int seats, int fuelCapacity, Engine engine) {
+//        this.model = model;
+//        this.typeOfCar = typeOfCar;
+//        this.horsePowers = horsePowers;
+//        this.mass = mass;
+//        this.seats = seats;
+//        this.fuelCapacity = fuelCapacity;
+//        this.engine = engine;
+//    }
 
-    public Engine getEngine() {
+    public @NotNull Engine getEngine() {
         return engine;
     }
 
+
+    public static CarBuilder builder() {
+        return new CarBuilder();
+    }
 
     @Override
     public void move(int distance) {
@@ -62,7 +68,33 @@ public class Car implements CarInterface {
     }
 
 
+    public void setModel(String model) {
+        this.model = model;
+    }
 
+    public void setTypeOfCar(@NotNull TypeOfCar typeOfCar) {
+        this.typeOfCar = typeOfCar;
+    }
+
+    public void setHorsePowers(int horsePowers) {
+        this.horsePowers = horsePowers;
+    }
+
+    public void setMass(int mass) {
+        this.mass = mass;
+    }
+
+    public void setSeats(int seats) {
+        this.seats = seats;
+    }
+
+    public void setFuelCapacity(int fuelCapacity) {
+        this.fuelCapacity = fuelCapacity;
+    }
+
+    public void setEngine(@NotNull Engine engine) {
+        this.engine = engine;
+    }
 
     @Override
     public String toString() {

@@ -1,58 +1,49 @@
 package hw13;
 
 public final class CarBuilder {
-    private String model;
-    private TypeOfCar typeOfCar;
-    private int horsePowers;
-    private int mass;
-    private int seats;
-    private int fuelCapacity;
-    private Engine engine;
+
+    private final Car car;
 
     public CarBuilder() {
-    }
-
-    public static CarBuilder aCar() {
-        return new CarBuilder();
+        car = new Car();
     }
 
     public CarBuilder withModel(String model) {
-        this.model = model;
+        car.setModel(model);
         return this;
     }
 
     public CarBuilder withTypeOfCar(TypeOfCar typeOfCar) {
-        this.typeOfCar = typeOfCar;
+        car.setTypeOfCar(typeOfCar);
         return this;
     }
 
     public CarBuilder withHorsePowers(int horsePowers) {
-        this.horsePowers = horsePowers;
+        car.setHorsePowers(horsePowers);
         return this;
     }
 
     public CarBuilder withMass(int mass) {
-        this.mass = mass;
+        car.setMass(mass);
         return this;
     }
 
     public CarBuilder withSeats(int seats) {
-        this.seats = seats;
+        car.setSeats(seats);
         return this;
     }
 
     public CarBuilder withFuelCapacity(int fuelCapacity) {
-        this.fuelCapacity = fuelCapacity;
+        car.setFuelCapacity(fuelCapacity);
         return this;
     }
 
     public CarBuilder withEngine(Engine engine) {
-        this.engine = engine;
+        car.setEngine(engine);
         return this;
     }
 
-
     public Car build() {
-        return new Car(model, typeOfCar, horsePowers, mass, seats, fuelCapacity, engine);
+        return car;
     }
 }

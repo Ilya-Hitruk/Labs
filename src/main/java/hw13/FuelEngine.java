@@ -6,6 +6,11 @@ public class FuelEngine implements Engine {
     private final int cylinders;
     private static boolean isStarted;
 
+    public FuelEngine() {
+        engineCapacity = 0;
+        cylinders = 0;
+    }
+
     public FuelEngine(double engineCapacity, int cylinders) {
         this.engineCapacity = engineCapacity;
         this.cylinders = cylinders;

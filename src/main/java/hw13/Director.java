@@ -20,7 +20,7 @@ public class Director {
     private static final Engine ENGINE_TESLA = new ElectricEngine(500, 4);
 
     public Car constructFuelCar() {
-        return CarBuilder.aCar()
+        return Car.builder()
                 .withModel(MODEL_MERCEDES)
                 .withTypeOfCar(TYPE_MERCEDES)
                 .withHorsePowers(HORSE_POWERS_MERCEDES)
@@ -33,7 +33,7 @@ public class Director {
 
 
     public Car constructElectricCar() {
-        return CarBuilder.aCar()
+        return Car.builder()
                 .withModel(MODEL_TESLA)
                 .withTypeOfCar(TYPE_TESLA)
                 .withHorsePowers(HORSE_POWERS_TESLA)
