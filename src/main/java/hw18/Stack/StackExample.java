@@ -1,6 +1,8 @@
 package hw18.Stack;
 
 
+import java.util.EmptyStackException;
+
 public class StackExample<E> implements StackInterface<E> {
     private Node<E> head;
     private int size;
@@ -29,8 +31,9 @@ public class StackExample<E> implements StackInterface<E> {
             head = head.next;
             size--;
             return value;
+        } else {
+            throw new EmptyStackException();
         }
-        return null;
     }
 
     @Override
@@ -38,7 +41,9 @@ public class StackExample<E> implements StackInterface<E> {
         if (head != null) {
             return head.value;
         }
-        return null;
+        else {
+            throw new EmptyStackException();
+        }
     }
 
     @Override

@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 
 
-public class LinkedListExample<T> implements ListInterface<T> {
+public class LinkedListExample<T> implements ListInterface<T>, Comparable<T> {
     private Node<T> first;
     private Node<T> last;
     private int size;
@@ -78,22 +78,21 @@ public class LinkedListExample<T> implements ListInterface<T> {
     @Override
     public void add(int index, T value) {
         Objects.checkIndex(index, size + 1);
-        final Node<T> newNode = new Node<>(null, value, null);          //[1]  [2]  [10]  [3]  [4]
+        final Node<T> newNode = new Node<>(null, value, null);
         if (first == null) {
             first = last = newNode;
+            size++;
         } else if (index == 0) {
             linkFirst(value);
-            return;
         } else if (index == size) {
             linkLast(value);
-            return;
         } else {
             Node<T> previous = getNodeByIndex(index - 1);
             newNode.next = previous.next;
             previous.next = newNode;
             newNode.previous = previous.previous;
+            size++;
         }
-        size++;
     }
 
     @Override
@@ -130,22 +129,14 @@ public class LinkedListExample<T> implements ListInterface<T> {
         Objects.checkIndex(index, size);
         T removedElement;
         if (index == 0) {
-            removedElement = first.value;
-            first = first.next;
-            if (first == null) {
-                last = null;
-            }
+            removedElement = removeFirstElement();
         } else {
-            Node<T> previous = getNodeByIndex(index - 1);
-            removedElement = previous.next.value;
-            previous.next = previous.next.next;
-            if (index == size - 1) {
-                last = previous;
-            }
+            removedElement = removeElement(index);
         }
         size--;
         return removedElement;
     }
+
 
     @Override
     public T removeFirst() {
@@ -224,5 +215,25 @@ public class LinkedListExample<T> implements ListInterface<T> {
         else
             l.next = newNode;
         size++;
+    }
+
+    private T removeFirstElement() {
+        T removed = first.value;
+        first = first.next;
+        if (first == null) {
+            last = null;
+        }
+        return removed;
+    }
+
+    private T removeElement(int index) {
+        T removed;
+        Node<T> previous = getNodeByIndex(index - 1);
+        removed = previous.next.value;
+        previous.next = previous.next.next;
+        if (index == size - 1) {
+            last = previous;
+        }
+        return removed;
     }
 }
