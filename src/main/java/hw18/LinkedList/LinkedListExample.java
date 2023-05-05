@@ -2,15 +2,12 @@ package hw18.LinkedList;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 
-public class LinkedListExample<T> implements ListInterface<T>, Comparable<T> {
-    private Node<T> first;
-    private Node<T> last;
-    private int size;
+public class LinkedListExample<T extends Comparable<T>> implements ListInterface<T> {
 
     private static class Node<T> {
         T value;
@@ -22,6 +19,20 @@ public class LinkedListExample<T> implements ListInterface<T>, Comparable<T> {
             this.value = value;
             this.next = next;
         }
+    }
+
+    private Node<T> first;
+    private Node<T> last;
+    private int size;
+
+    @NotNull
+    @Override
+    public Iterator<T> iterator() {
+        return new ListIterator();
+    }
+
+    private Comparator<T> reverseComparator() {
+        return new ReversedListComparator();
     }
 
     private final class ListIterator implements Iterator<T> {
@@ -58,16 +69,26 @@ public class LinkedListExample<T> implements ListInterface<T>, Comparable<T> {
         }
     }
 
-
-    @Override
-    public int compareTo(@NotNull T o) {
-        return 0;
+    private final class ListComparator implements Comparator<T> {
+        @Override
+        public int compare(T o1, T o2) {
+            return o1.compareTo(o2);
+        }
+        @Override
+        public Comparator<T> reversed() {
+            return new ReversedListComparator();
+        }
     }
 
-    @NotNull
-    @Override
-    public Iterator<T> iterator() {
-        return new ListIterator();
+    private final class ReversedListComparator implements Comparator<T> {
+        @Override
+        public int compare(T o1, T o2) {
+            return o2.compareTo(o1);
+        }
+        @Override
+        public Comparator<T> reversed() {
+            return new ListComparator();
+        }
     }
 
     @Override
@@ -137,7 +158,6 @@ public class LinkedListExample<T> implements ListInterface<T>, Comparable<T> {
         return removedElement;
     }
 
-
     @Override
     public T removeFirst() {
         return remove(0);
@@ -174,6 +194,39 @@ public class LinkedListExample<T> implements ListInterface<T>, Comparable<T> {
     public void clear() {
         first = last = null;
         size = 0;
+    }
+
+    @Override
+    public Object[] toArray() {
+        Object[] arrayOfList = new Object[size];
+        Node<T> temp = first;
+        int i = 0;
+        while (Objects.nonNull(temp)){
+            arrayOfList[i] = temp.value;
+            temp = temp.next;
+            i++;
+        }
+        return arrayOfList;
+    }
+
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    @Override
+    public void sort(boolean order) {
+        Object[] arrayOfList = toArray();
+
+        if (order) {
+            Arrays.sort(arrayOfList);
+        } else {
+            Arrays.sort(arrayOfList, (Comparator) reverseComparator());
+        }
+        for (int i = 0; i < arrayOfList.length; i++) {
+            set(i, (T)arrayOfList[i]);
+        }
+    }
+    @Override
+    public Stream<T> stream() {
+        Spliterator<T> spliterator = Spliterators.spliteratorUnknownSize(iterator(), Spliterator.SIZED);
+        return StreamSupport.stream(spliterator, true);
     }
 
     @Override
