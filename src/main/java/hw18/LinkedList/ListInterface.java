@@ -1,6 +1,8 @@
 package hw18.LinkedList;
 
-public interface ListInterface<T> extends Iterable<T>, Comparable<T> {
+import java.util.stream.Stream;
+
+public interface ListInterface<T> extends Iterable<T>{
     void add(T element);
     void add(int index, T element);
     void set(int index, T element);
@@ -15,5 +17,7 @@ public interface ListInterface<T> extends Iterable<T>, Comparable<T> {
     boolean isEmpty();
     int size();
     void clear();
-
+    Object[] toArray();
+    void sort(boolean order);
+    Stream<T> stream();
 }

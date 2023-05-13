@@ -5,6 +5,7 @@ import hw18.LinkedList.LinkedListExample;
 import hw18.LinkedList.ListInterface;
 import hw18.Stack.StackExample;
 
+
 public class Main {
     public static void main(String[] args) {
         ListInterface<Integer> listExample = new LinkedListExample<>();
@@ -30,10 +31,26 @@ public class Main {
         System.out.println("contains 10 = " + listExample.contains(10));
         System.out.println("is Empty = " + listExample.isEmpty());
         System.out.println("size = " + listExample.size());
+
+
+
+        System.out.println("\n" + listExample);
+        listExample.sort(true);
+        System.out.println("\n" + listExample);
+        listExample.sort(false);
+        System.out.println("\n" + listExample + "\n");
+
+        System.out.println("Stream example = " + listExample.stream()
+                .filter(x -> x < 5)
+                .toList());
+
+        System.out.println("Stream example = " + listExample.stream()
+                .filter(x -> x > 5)
+                .toList());
+
+
         listExample.clear();
-        System.out.println("cleared list isEmpty = " + listExample.isEmpty());
-
-
+        System.out.println("\ncleared list isEmpty = " + listExample.isEmpty());
 
 
         StackExample<Integer> stackExample = new StackExample<>();
@@ -55,5 +72,6 @@ public class Main {
 
         System.out.println("\n" + stackExample + "\n");
         System.out.println(stackExample.isEmpty());
+
     }
 }
