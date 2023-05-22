@@ -12,6 +12,7 @@ public interface ListInterface<T> extends Iterable<T>{
     T remove(int index);
     T removeFirst();
     T removeLast();
+    void addAll(T[] array);
 
     boolean contains(T element);
     boolean isEmpty();

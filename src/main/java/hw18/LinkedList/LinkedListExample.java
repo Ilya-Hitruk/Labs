@@ -1,5 +1,6 @@
 package hw18.LinkedList;
 
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -132,8 +133,9 @@ public class LinkedListExample<T extends Comparable<T>> implements ListInterface
     @Override
     public T getFirst() {
         final Node<T> tempFirst = first;
-        if (tempFirst == null)
+        if (Objects.isNull(first)) {
             throw new NoSuchElementException();
+        }
         return tempFirst.value;
     }
 
@@ -207,6 +209,13 @@ public class LinkedListExample<T extends Comparable<T>> implements ListInterface
             i++;
         }
         return arrayOfList;
+    }
+
+    @Override
+    public void addAll(T[] array) {
+            for (T value : array) {
+                add(value);
+        }
     }
 
     @SuppressWarnings({"unchecked", "rawtypes"})
