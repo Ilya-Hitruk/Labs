@@ -3,57 +3,28 @@ package hw18;
 
 import hw18.LinkedList.LinkedListExample;
 import hw18.LinkedList.ListInterface;
+import hw18.Logger.LoggerTest;
 import hw18.Stack.StackExample;
+import hw18.Stack.StackInterface;
 
 
 public class Main {
+
+    private static final Integer[] EXAMPLE = {4, 8, 15, 16, 23, 42};
+    private static final LoggerTest loggerTest = new LoggerTest();
+    private static final StackInterface<Integer> stackExample = new StackExample<>();
+
+    private static final ListInterface<Integer> listExample = new LinkedListExample<>();
     public static void main(String[] args) {
-        ListInterface<Integer> listExample = new LinkedListExample<>();
-        listExample.add(1);
-        listExample.add(2);
-        listExample.add(3);
-        listExample.add(4);
-        listExample.add(5);
-        listExample.add(2, 10);
-        listExample.set(3, 7);
+
+        // Logger Test
+        System.out.println(loggerTest.getFirst());
+        loggerTest.add(1);
+        loggerTest.add(5, 6);
+        System.out.println();
 
 
-        System.out.println(listExample);
-        System.out.println("get = " + listExample.get(2));
-        System.out.println("getFirst = " + listExample.getFirst());
-        System.out.println("getLast = " + listExample.getLast() + "\n");
-
-        System.out.println("remove = " + listExample.remove(5));
-        System.out.println("removeFirst = " + listExample.removeFirst());
-        System.out.println("removeLast = " + listExample.removeLast() + "\n");
-        System.out.println(listExample);
-
-        System.out.println("contains 10 = " + listExample.contains(10));
-        System.out.println("is Empty = " + listExample.isEmpty());
-        System.out.println("size = " + listExample.size());
-
-
-
-        System.out.println("\n" + listExample);
-        listExample.sort(true);
-        System.out.println("\n" + listExample);
-        listExample.sort(false);
-        System.out.println("\n" + listExample + "\n");
-
-        System.out.println("Stream example = " + listExample.stream()
-                .filter(x -> x < 5)
-                .toList());
-
-        System.out.println("Stream example = " + listExample.stream()
-                .filter(x -> x > 5)
-                .toList());
-
-
-        listExample.clear();
-        System.out.println("\ncleared list isEmpty = " + listExample.isEmpty());
-
-
-        StackExample<Integer> stackExample = new StackExample<>();
+        // Stack Test
         System.out.println(stackExample.push(1));
         System.out.println(stackExample.push(2));
         System.out.println(stackExample.push(3));
@@ -73,5 +44,9 @@ public class Main {
         System.out.println("\n" + stackExample + "\n");
         System.out.println(stackExample.isEmpty());
 
+        // Sorted List
+        listExample.addAll(EXAMPLE);
+        listExample.sort(true);
+        listExample.stream().forEach(System.out::println);
     }
 }

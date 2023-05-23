@@ -1,0 +1,16 @@
+2023-05-16 23:18:43,813 INFO [main] H.L.LinkedListExample [LinkedListExample.java:141] -- No such element
+2023-05-16 23:21:02,087 INFO [main] H.L.LinkedListExample [LinkedListExample.java:141] H.LinkedList.LinkedListExample -- No such element
+2023-05-16 23:27:34,303 INFO [main] H.L.LinkedListExample [LinkedListExample.java:141] default -- No such element
+2023-05-16 23:28:23,347 INFO [main] H.L.LinkedListExample [LinkedListExample.java:141] Caller+0	 at hw18.LinkedList.LinkedListExample.getFirst(LinkedListExample.java:141)
+Caller+1	 at hw18.Main.main(Main.java:14)
+ -- No such element
+2023-05-16 23:29:19,815 INFO [main] H.L.LinkedListExample [LinkedListExample.java:141]  -- No such element
+2023-05-16 23:30:35,210 INFO [main] H.L.LinkedListExample [LinkedListExample.java:141] default -- No such element
+2023-05-18 21:46:35,366 WARN [main] h.L.LoggerTest [LoggerTest.java:38] default -- No such element
+2023-05-18 21:46:35,373 WARN [main] h.L.LoggerTest [LoggerTest.java:29] default -- Index out of bounds
+2023-05-18 21:50:18,046 WARN [main] h.L.LoggerTest [LoggerTest.java:38] default -- No such element
+2023-05-18 21:50:18,055 WARN [main] h.L.LoggerTest [LoggerTest.java:29] default -- Index out of bounds
+2023-05-18 21:51:00,413 WARN [main] h.L.LoggerTest [LoggerTest.java:38] default -- No such element
+2023-05-18 21:51:00,420 WARN [main] h.L.LoggerTest [LoggerTest.java:29] default -- Index out of bounds
+2023-05-22 19:50:40,911 WARN [main] h.L.LoggerTest [LoggerTest.java:38] default -- No such element
+2023-05-22 19:50:40,924 WARN [main] h.L.LoggerTest [LoggerTest.java:29] default -- Index out of bounds
