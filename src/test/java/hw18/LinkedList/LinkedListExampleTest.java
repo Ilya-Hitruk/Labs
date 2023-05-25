@@ -213,6 +213,16 @@ class LinkedListExampleTest {
     }
 
     @Test
+    void toArray() {
+
+        // Act
+        Object[] actual = listExample.toArray();
+
+        // Assert
+        assertArrayEquals(EXAMPLE, actual);
+    }
+
+    @Test
     void clear() {
         // Arrange
         boolean expected = true;
