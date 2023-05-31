@@ -2,7 +2,7 @@ package hw27;
 
 import lombok.SneakyThrows;
 
-public class BankWindow implements Bank {
+public class BankWindow extends Thread {
 
     private final int numberOfWindow;
     private final BankQueue bankQueue;
@@ -25,9 +25,7 @@ public class BankWindow implements Bank {
                                 currentClient.name(), currentClient.id(), numberOfWindow);
         }
     }
-
-    @Override
-    public Client serveNextClient() {
+    private Client serveNextClient() {
         return bankQueue.dequeue();
     }
 }
