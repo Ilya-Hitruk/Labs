@@ -1,15 +1,16 @@
 package hw27;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class BankQueue {
 
-    private final Queue<Client> clientQueue;
+
+    private final BlockingQueue<Client> clientQueue;
 
 
     public BankQueue() {
-        this.clientQueue = new LinkedList<>();
+        this.clientQueue = new LinkedBlockingQueue<>();
     }
 
     public void enqueue(Client client) {
