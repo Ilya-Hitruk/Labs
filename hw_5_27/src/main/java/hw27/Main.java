@@ -1,8 +1,12 @@
 package hw27;
 
+import hw27.Bank.Bank;
+import hw27.Bank.BankQueue;
+import hw27.Client.Clients;
+
+
 public class Main implements Clients {
     public static void main(String[] args) {
-
         BankQueue bankQueue = new BankQueue();
 
         bankQueue.enqueue(ilya);
@@ -15,13 +19,8 @@ public class Main implements Clients {
         bankQueue.enqueue(alice);
         bankQueue.enqueue(ekaterina);
 
-        BankWindow firstBankWindow = new BankWindow(1, bankQueue);
-        firstBankWindow.start();
 
-        BankWindow secondBankWindow = new BankWindow(2, bankQueue);
-        secondBankWindow.start();
-
-        BankWindow thirdBankWindow = new BankWindow(3, bankQueue);
-        thirdBankWindow.start();
+        Bank bank = new Bank(bankQueue);
+        bank.start();
     }
 }

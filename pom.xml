@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>hw_5_27</module>
+        <module>specific_tasks</module>
     </modules>
 
     <properties>
