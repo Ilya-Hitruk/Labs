@@ -1,4 +1,4 @@
-package ExecutorServiceExample;
+package Multithreading.ExecutorServiceExample;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

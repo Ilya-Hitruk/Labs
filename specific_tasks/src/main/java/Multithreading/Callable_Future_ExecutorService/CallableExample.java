@@ -1,7 +1,9 @@
-package Callable_Future_ExecutorService;
+package Multithreading.Callable_Future_ExecutorService;
 
 import java.util.concurrent.*;
 
+
+// CALLABLE CAN BE USED ONLY WITH EXECUTOR SERVICES
 public class CallableExample {
     static final int TEST_NUMBER = 5;
     static int factorialResult;
@@ -12,7 +14,9 @@ public class CallableExample {
         Future<Integer> future = executorService.submit(factorial);
 
         try {
-            factorialResult = future.get();
+            System.out.println(future.isDone());
+            factorialResult = future.get(); // get method will block current thread till it gets result
+            System.out.println(future.isDone());
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         } catch (ExecutionException e) {
@@ -42,6 +46,7 @@ class Factorial implements Callable<Integer> {
         int result = 1;
         for (int i = 1; i <= f; i++) {
             result *= i;
+            Thread.sleep(1000);
         }
         return result;
     }
