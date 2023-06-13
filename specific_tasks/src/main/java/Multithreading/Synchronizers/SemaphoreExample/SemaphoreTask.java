@@ -1,4 +1,4 @@
-package Multithreading.SemaphoreExample;
+package Multithreading.Synchronizers.SemaphoreExample;
 
 import java.util.concurrent.Semaphore;
 
