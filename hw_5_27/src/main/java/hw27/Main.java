@@ -4,7 +4,6 @@ import hw27.Bank.Bank;
 import hw27.Bank.BankQueue;
 import hw27.Client.Clients;
 
-
 public class Main implements Clients {
     public static void main(String[] args) {
         BankQueue bankQueue = new BankQueue();

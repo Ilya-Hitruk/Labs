@@ -10,7 +10,7 @@ public class FutureExample {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         Future<?> future = executorService.submit(factorial);
 
-        System.out.println(future.get()); // get method using submit with runnable implemented class returns null
+        System.out.println(future.get()); // get method by using submit with runnable implemented class returns null
         System.out.println(future.isDone());
 
         executorService.shutdown();
