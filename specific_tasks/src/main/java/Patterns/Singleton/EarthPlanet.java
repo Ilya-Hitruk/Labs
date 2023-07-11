@@ -4,9 +4,9 @@ import java.time.LocalDate;
 
 public class EarthPlanet {
     private static EarthPlanet earthPlanet;
-    public LocalDate localDate;
-    public double latitude;
-    public String nameOfTheCity;
+    private final LocalDate localDate;
+    private final double latitude;
+    private final String nameOfTheCity;
 
 
     private EarthPlanet(LocalDate localDate, double latitude, String nameOfTheCity){
@@ -15,13 +15,15 @@ public class EarthPlanet {
         this.nameOfTheCity = nameOfTheCity;
     }
 
-    public static EarthPlanet getInstance(LocalDate localDate, double attitude, String nameOfTheCity) {
-        synchronized (EarthPlanet.class) {
-            if (earthPlanet == null) {
-                earthPlanet = new EarthPlanet(localDate, attitude, nameOfTheCity);
+    public static class SingletonHolder {
+        public static EarthPlanet getInstance(LocalDate localDate, double attitude, String nameOfTheCity) {
+            synchronized (EarthPlanet.class) {
+                if (earthPlanet == null) {
+                    earthPlanet = new EarthPlanet(localDate, attitude, nameOfTheCity);
+                }
             }
+            return earthPlanet;
         }
-        return earthPlanet;
     }
 
     public String getSeason() {

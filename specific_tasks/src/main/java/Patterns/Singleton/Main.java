@@ -8,7 +8,7 @@ public class Main {
         double latitude = 40.7128;
         LocalDate date = LocalDate.of(2023, 12, 16);
         String cityName = "NewYork";
-        EarthPlanet earthPlanet = EarthPlanet.getInstance(date, latitude, cityName);
+        EarthPlanet earthPlanet = EarthPlanet.SingletonHolder.getInstance(date, latitude, cityName);
 
         System.out.println(earthPlanet.getSeason());
     }
