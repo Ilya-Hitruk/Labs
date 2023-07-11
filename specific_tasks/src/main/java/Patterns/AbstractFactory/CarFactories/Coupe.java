@@ -1,4 +1,4 @@
 package Patterns.AbstractFactory.CarFactories;
 
-public interface Coupe {
+public interface Coupe extends Car {
 }

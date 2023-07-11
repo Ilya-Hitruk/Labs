@@ -1,4 +1,4 @@
 package Patterns.AbstractFactory.CarFactories;
 
-public interface Cabriolet {
+public interface Cabriolet extends Car {
 }
